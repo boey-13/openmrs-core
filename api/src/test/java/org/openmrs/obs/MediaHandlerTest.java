@@ -7,7 +7,7 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-/**package org.openmrs.obs;
+package org.openmrs.obs;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -40,63 +40,63 @@ public class MediaHandlerTest extends BaseContextSensitiveTest {
 	@Autowired
 	MediaHandler handler;
 	
-	@Test
-    public void shouldReturnSupportedViews() {
-		String[] actualViews = handler.getSupportedViews();
+// 	@Test
+ //    public void shouldReturnSupportedViews() {
+	// 	String[] actualViews = handler.getSupportedViews();
 
-		assertArrayEquals(actualViews, new String[]{ ComplexObsHandler.RAW_VIEW });
-    }
+	// 	assertArrayEquals(actualViews, new String[]{ ComplexObsHandler.RAW_VIEW });
+  //   }
 
-    @Test
-    public void shouldSupportRawView() {
+  //   @Test
+  //   public void shouldSupportRawView() {
 
-		assertTrue(handler.supportsView(ComplexObsHandler.RAW_VIEW));
-    }
-
-    @Test
-    public void shouldNotSupportOtherViews() {
-        assertFalse(handler.supportsView(ComplexObsHandler.HTML_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.PREVIEW_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.TEXT_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.TITLE_VIEW));
-        assertFalse(handler.supportsView(ComplexObsHandler.URI_VIEW));
-        assertFalse(handler.supportsView(""));
-        assertFalse(handler.supportsView(null));
+	// 	assertTrue(handler.supportsView(ComplexObsHandler.RAW_VIEW));
+   //  }
+// 
+  //   @Test
+  //   public void shouldNotSupportOtherViews() {
+  //       assertFalse(handler.supportsView(ComplexObsHandler.HTML_VIEW));
+  //       assertFalse(handler.supportsView(ComplexObsHandler.PREVIEW_VIEW));
+   //      assertFalse(handler.supportsView(ComplexObsHandler.TEXT_VIEW));
+    //     assertFalse(handler.supportsView(ComplexObsHandler.TITLE_VIEW));
+    //     assertFalse(handler.supportsView(ComplexObsHandler.URI_VIEW));
+      //   assertFalse(handler.supportsView(""));
+    //     assertFalse(handler.supportsView(null));
     }
     
-	@Test
-	public void saveObs_shouldRetrieveCorrectMimetype() throws IOException {
+	// @Test
+// 	public void saveObs_shouldRetrieveCorrectMimetype() throws IOException {
 		
-		adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR,
-		        "obs"));
-		
-		File sourceFile = Paths.get("src", "test", "resources", "ComplexObsTestAudio.mp3").toFile();
-		
-		Obs complexObs1 = null;
-		Obs complexObs2 = null;
-		try (FileInputStream in1 = new FileInputStream(sourceFile);
-				 FileInputStream in2 = new FileInputStream(sourceFile)
-			) {
-			ComplexData complexData1 = new ComplexData("TestingComplexObsSaving.mp3", in1);
-			ComplexData complexData2 = new ComplexData("TestingComplexObsSaving.mp3", in2);
+	// 	adminService.saveGlobalProperty(new GlobalProperty(OpenmrsConstants.GLOBAL_PROPERTY_COMPLEX_OBS_DIR,
+	// 	        "obs"));
+	// 	
+	// 	File sourceFile = Paths.get("src", "test", "resources", "ComplexObsTestAudio.mp3").toFile();
+	// 	
+	// 	Obs complexObs1 = null;
+	// 	Obs complexObs2 = null;
+	// 	try (FileInputStream in1 = new FileInputStream(sourceFile);
+	// 	// 		 FileInputStream in2 = new FileInputStream(sourceFile)
+		// 	) {
+		// 	ComplexData complexData1 = new ComplexData("TestingComplexObsSaving.mp3", in1);
+		// 	ComplexData complexData2 = new ComplexData("TestingComplexObsSaving.mp3", in2);
 			
 			// Construct 2 Obs to also cover the case where the filename exists already
-			Obs obs1 = new Obs();
-			obs1.setComplexData(complexData1);
-			Obs obs2 = new Obs();
-			obs2.setComplexData(complexData2);
+		// 	Obs obs1 = new Obs();
+		// 	obs1.setComplexData(complexData1);
+		// 	Obs obs2 = new Obs();
+		// 	obs2.setComplexData(complexData2);
 			
-			handler.saveObs(obs1);
-			handler.saveObs(obs2);
+		// 	handler.saveObs(obs1);
+			// handler.saveObs(obs2);
 			
-			complexObs1 = handler.getObs(obs1, "RAW_VIEW");
-			complexObs2 = handler.getObs(obs2, "RAW_VIEW");
+			// complexObs1 = handler.getObs(obs1, "RAW_VIEW");
+		// 	complexObs2 = handler.getObs(obs2, "RAW_VIEW");
 			
-			assertEquals("audio/mpeg", complexObs1.getComplexData().getMimeType());
-			assertEquals("audio/mpeg", complexObs2.getComplexData().getMimeType());
-		} finally {
-			((InputStream) complexObs1.getComplexData().getData()).close();
-			((InputStream) complexObs2.getComplexData().getData()).close();
-		}
-	}
-}*/
+			// assertEquals("audio/mpeg", complexObs1.getComplexData().getMimeType());
+		// 	assertEquals("audio/mpeg", complexObs2.getComplexData().getMimeType());
+		// } finally {
+	// 		((InputStream) complexObs1.getComplexData().getData()).close();
+	// 		((InputStream) complexObs2.getComplexData().getData()).close();
+	// 	}
+// 	}
+}
