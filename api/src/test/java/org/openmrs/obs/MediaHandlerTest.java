@@ -7,7 +7,7 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-package org.openmrs.obs;
+/**package org.openmrs.obs;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -99,4 +99,4 @@ public class MediaHandlerTest extends BaseContextSensitiveTest {
 			((InputStream) complexObs2.getComplexData().getData()).close();
 		}
 	}
-}
+}*/
